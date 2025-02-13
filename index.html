@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>God is Good</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+        }
+        header {
+            background-color: #F8A5C2;
+            color: white;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            border-bottom: 3px solid #F5B7B1;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            font-size: 2em;
+            font-weight: 600;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #F5B7B1;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            flex-wrap: wrap;
+        }
+        nav button {
+            background-color: #fff;
+            border: none;
+            margin: 8px;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 25px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        nav button:hover {
+            background-color: #f1f1f1;
+            transform: scale(1.1);
+        }
+        nav button:active {
+            background-color: #F8A5C2;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .versiculo {
+            margin-top: 15px;
+        }
+        .versiculo button {
+            background-color: #6C5B7B;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            width: 100%;
+            margin: 5px 0;
+        }
+        .versiculo button:hover {
+            background-color: #5D4A6B;
+            transform: scale(1.05);
+        }
+        .versiculo p {
+            display: none;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        .versiculo p.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Leeme cuando te sientas...</h1>
+</header>
+
+<nav>
+    <button onclick="mostrarVersiculos('enojo')">😡 Enojada</button>
+    <button onclick="mostrarVersiculos('felicidad')">😊 Feliz</button>
+    <button onclick="mostrarVersiculos('tristeza')">😢 Triste</button>
+    <button onclick="mostrarVersiculos('ansiedad')">😟 Ansiosa</button>
+    <button onclick="mostrarVersiculos('agradecimiento')">🙏 Agradecida</button>
+    <button onclick="mostrarVersiculos('creativa')">🎨 Creativa</button>
+    <button onclick="mostrarVersiculos('perdonada')">💖 Perdonada</button>
+    <button onclick="mostrarVersiculos('amada')">😍 Amada</button>
+    <button onclick="mostrarVersiculos('valentia')">🦸‍♀️ Sin valentía</button>
+    <button onclick="mostrarVersiculos('soledad')">😔 Sola</button>
+</nav>
+
+<div class="container" id="contenedor">
+  
+</div>
+
+<script>
+    const versiculos = {
+        enojo: [
+    {numero: "Efesios 4:26", texto: "Guidi, está bien enojarte 😡, pero no dejes que el enojo te controle ni dure todo el día. 🌅💭"},
+    {numero: "Proverbios 15:1", texto: "Hablar con calma 🗣️ puede apagar cualquier enojo; pero responder mal lo empeora. ⚡❌"},
+    {numero: "Salmos 37:8", texto: "Deja ir el enojo y la ira 😤, porque solo te llevan por un mal camino. 🚫🌪️"},
+    {numero: "Efesios 4:32", texto: "Sean amables 💖, Guidi, perdonen como Dios los perdonó. 🙏💞"},
+    {numero: "Santiago 1:19", texto: "Recuerda, Guidi, siempre es mejor escuchar con atención 👂👂, hablar con calma 🕊️ y no enojarte rápido. ⏳💡"},
+    {numero: "Eclesiastés 7:9", texto: "Guidi, no te enojes tan rápido 😠, porque el enojo solo termina dañándote 😢 y no lleva a nada bueno. 🌪️❌"},
+    {numero: "Proverbios 10:12", texto: "El odio divide 😞, pero el amor ❤️ cubre los errores. ✨💫"}
+],
+
+        felicidad: [
+    {numero: "Salmo 16:11", texto: "Dios le mostrata a Guidi la senda de la vida; en su presencia hay plenitud de gozo; delicias a su diestra para siempre."},
+            {numero: "Filipenses 4:4", texto: "Guidi, regocíjate en el Señor siempre... forever. 🎉🙏💖"},
+    {numero: "Salmos 118:24", texto: "Hoy Dios le ha regalado un día a Guidi, para que los disfrute y sea alegre. 🌞🎁😄"},
+    {numero: "Salmos 35:9", texto: "Mi corazón está feliz ❤️ porque Dios me salvó, ¡me alegro en Él! 🙌🎉"},
+    {numero: "Proverbios 15:13", texto: "Cuando Guidi está feliz, hasta su cara lo refleja 😊. ¡La alegría la ilumina! ✨🌟"},
+    {numero: "Salmos 30:11", texto: "Dios transformó mi tristeza 😞 en baile 💃 y llenó mi vida de alegría. 🎶💫"},
+    {numero: "Romanos 4:7-8", texto: "Qué bendición es ser perdonada por Dios, Guidi, y saber que tus errores ya no cuentan. 🙏💖💫"},
+    {numero: "Salmos 33:21", texto: "Confiamos en Dios, y eso llena de alegría nuestro corazón. 💖😄"},
+    {numero: "Salmos 90:14", texto: "Llénanos de tu amor cada mañana, Dios, para vivir felices todos los días. 🌞💖😊"},
+    {numero: "Salmos 92:4", texto: "Dios, tus maravillas me hacen feliz; me alegro con todo lo que haces. 🌟🙌🎉"},
+    {numero: "3 Juan 4", texto: "No hay mayor felicidad para Guidi que saber que quienes ama viven con verdad. ❤️📖✨"}
+        ],
+    tristeza: [
+             {numero: "Mateo 5:4", texto: "Guidi, bienaventurados los que lloran, porque ellos recibirán consolación. 😢💖"},
+    {numero: "Salmo 34:17-18", texto: "Dios está contigo cuando tu corazón está roto 💔 y te da fuerzas cuando más lo necesitas. 🙏💪"},
+    {numero: "Jeremías 29:11", texto: "Guidi, Dios tiene planes increíbles para ti, llenos de esperanza 🌟 y cosas buenas. ✨😊"},
+    {numero: "Juan 16:20", texto: "Aunque pases momentos difíciles, recuerda que la tristeza 😞 se transformará en alegría. 🌈💖"},
+    {numero: "Salmo 147:3", texto: "Dios es el mejor sanador; Él cuida de tus heridas 💔 y de tu corazón roto. 🩹❤️"},
+    {numero: "Juan 14:27", texto: "Guidi, Dios te da una paz verdadera 🕊️, no dejes que la tristeza te derrote. 💪😌"},
+    {numero: "Salmo 42:11", texto: "Cuando te sientas triste 😔, recuerda que en Dios siempre hay esperanza. 🙏✨"},
+    {numero: "Salmo 30:5", texto: "La tristeza no es para siempre; pronto llegará un nuevo amanecer de felicidad. 🌅😊"},
+    {numero: "Romanos 8:28", texto: "Aunque ahora no lo veas, Dios tiene un plan bueno para ti. ✨🙏"},
+    {numero: "Filipenses 4:13", texto: "Con Dios a tu lado, Guidi, puedes superar cualquier tristeza. 💪🙏❤️"},
+    {numero: "2 Corintios 1:3-4", texto: "Cuando sientas tristeza, busca a Dios en oración 🙏; cuando estés feliz, llénate de gratitud y alaba su nombre. 🌟😊"},
+    {numero: "Juan 16:33", texto: "Aunque la vida traiga problemas, en Jesús siempre encontrarás paz 🕊️ y fortaleza 💪, porque Él ya ha vencido por ti. ✝️💖"},
+    {numero: "Salmo 126:5-6", texto: "Tus esfuerzos en medio de la tristeza darán fruto, y lo que hoy siembras con lágrimas 😢 lo cosecharás con alegría. 🌾😊"}
+        ],
+        ansiedad: [
+     {numero: "Filipenses 4:6", texto: "Guidi, no te preocupes por nada. Habla con Dios, cuéntale lo que necesitas y agradece por lo que ya tienes. 🙏💬❤️"},
+    {numero: "Salmos 55:22", texto: "Deja tus preocupaciones en manos de Dios, Él te sostendrá y no te dejará caer. 🤲💖💪"},
+    {numero: "Salmos 23:1", texto: "Dios es quien guía tu vida, con Él nunca te faltará nada. 🙌💫🌟"},
+    {numero: "Mateo 11:28", texto: "Si te sientes cansada y agobiada, ven a mí y yo te daré descanso. 🛏️💤🙏"},
+    {numero: "Salmos 23:4", texto: "Aunque atravieses momentos oscuros, no tengas miedo; Dios está a tu lado. 🌑👣🙏"},
+    {numero: "Juan 14:27", texto: "Te dejo mi paz, una paz diferente a la del mundo. No te angusties ni tengas miedo. 🕊️💖🌿"},
+    {numero: "Mateo 6:33-34", texto: "Pon a Dios primero en tu vida, y todo lo demás llegará. No te preocupes por el mañana, concéntrate en vivir un día a la vez. ⏳🙏✨"},
+    {numero: "Isaías 40:31", texto: "Si confías en Dios, Él te renovará. Tendrás fuerzas para volar alto, correr sin cansarte y seguir adelante. 🕊️💪🌟"},
+    {numero: "Salmos 118:5-6", texto: "En mi angustia llamé a Dios, y Él me respondió con libertad. Dios está conmigo, así que no tengo nada que temer. 🙌💖😌"},
+    {numero: "Juan 14:1", texto: "No te angusties, confía en Dios. 🙏✨💖"},
+    {numero: "2 Corintios 9:8", texto: "Dios hará que tengas todo lo que necesitas, siempre y en cualquier situación, para que sigas haciendo el bien. 🙏💖✨"},
+    {numero: "Proverbios 3:5-6", texto: "Confía en Dios con todo tu corazón, no dependas solo de tu lógica. Busca su guía, y Él enderezará tu camino. 💖🙏🌟"},
+    {numero: "1 Pedro 5:7", texto: "Pon toda tu ansiedad en Dios, porque Él cuida de ti. 🤲💖🌿"}
+],
+        agradecimiento: [
+    {numero: "1 Tesalonicenses 5:18", texto: "Guidi, agradece siempre, no importa la situación, porque Dios tiene un propósito perfecto para ti. 🙏💖✨"},
+    {numero: "Salmo 103:2", texto: "Recuerda todo lo bueno que Dios ha hecho en tu vida y alábalo con gratitud. 🙌💫💖"},
+    {numero: "Salmo 150:6", texto: "Si estás viva, tienes un motivo para dar gracias y alabar a Dios. 🎶🙌💖"},
+    {numero: "Colosenses 3:17", texto: "Todo lo que hagas, hazlo con un corazón agradecido, recordando que Dios está presente en todo. 💖🙏🙌"},
+    {numero: "Salmo 107:1", texto: "Agradece a Dios por su bondad infinita y su amor que nunca termina. 🙏💖🌟"},
+    {numero: "Salmo 100:4", texto: "Acércate a Dios con gratitud, entra en su presencia con canciones de alabanza. Dale gracias y honra su nombre. 🎶🙏💖"},
+    {numero: "1 Crónicas 16:34", texto: "Dale gracias a Dios porque Él es increíble, y su amor no tiene fin. 🙏💖💫"},
+    {numero: "Colosenses 1:11", texto: "Sé fuerte y paciente en cualquier situación, siempre dando gracias con alegría a Dios, que nos hizo parte de su luz. 💪💖☀️"},
+    {numero: "Salmo 107:8", texto: "Agradece a Dios por su inmenso amor y por todas las cosas maravillosas que hace por ti. 🙏💖🌸"},
+    {numero: "Efesios 5:19-20", texto: "Anímense entre ustedes con canciones y palabras llenas de fe. Alaben a Dios desde el corazón y denle gracias por todo, en el nombre de Jesús. 🎶🙏💖✨"},
+    {numero: "Efesios 5:4", texto: "No uses palabras feas, bromas pesadas ni comentarios fuera de lugar. Mejor, da gracias a Dios. 🙏💖✨"},
+    {numero: "1 Timoteo 4:4-5", texto: "Todo lo que Dios creó es bueno. No despreciemos nada, sino agradezcamos a Dios por ello con fe y oración. 🙏💖🌿"},
+    {numero: "Salmo 105:1-2", texto: "Dale gracias a Dios y proclama su nombre. Habla de todo lo bueno que Él ha hecho por ti, canta y celebra sus maravillas. 🎶🙏💖🎉"}
+],
+        creativa: [
+            {numero: "Éxodo 35:31", texto: "Dios llenó a alguien con su Espíritu, dándole sabiduría, inteligencia y todo lo que necesitaba para ser creativa. Él te da todo lo que necesitas para que tu arte destaque. 🎨✨🙏"},
+    {numero: "Proverbios 8:12", texto: "Dios te da la sabiduría, Guidi, para crear cosas increíbles, y esa sabiduría te ayuda a tomar buenos consejos. 💡🎨📚"},
+    {numero: "Salmos 139:14", texto: "¡Qué increíble eres, Guidi! Dios te hizo de una manera única, y cuando ves lo que eres capaz de hacer, te das cuenta de lo maravillosa que es su obra. 🌟💖🎨"},
+    {numero: "Romanos 12:6", texto: "Tienes dones especiales, Guidi. Usa todo lo que sabes hacer con alegría, ya sea dibujar, crear, o enseñar. Todo lo que haces, hazlo con pasión y de corazón. 💖🎨✨"},
+    {numero: "Colosenses 3:23", texto: "Cuando dibujas o haces algo, hazlo con todo tu corazón, como si fuera para Dios, no para nadie más. ❤️🙏🎨"},
+    {numero: "1 Pedro 4:10", texto: "Cada habilidad que tienes, Guidi, es un regalo de Dios. Úsala para bendecir a los demás, porque Él te dio esos talentos para algo grande. 🎁💖✨"},
+    {numero: "Proverbios 22:29", texto: "Cuando eres buena en algo, como lo eres en tus dibujos, Guidi, eso no pasa desapercibido. Llegarás lejos y estarás delante de grandes personas. 🌟🎨💫"},
+    {numero: "Efesios 2:10", texto: "Dios te hizo para hacer cosas increíbles, Guidi. Tienes talentos y habilidades que Él preparó para ti. ¡Usa esos talentos al máximo! 🌟💪🎨"},
+    {numero: "Proverbios 3:5-6", texto: "Confía siempre en Dios, Guidi, con todo tu corazón. Él te guiará en cada paso, en cada proyecto creativo. 🙏❤️✨🎨"},
+    {numero: "Salmos 90:17", texto: "Que todo lo que hagas, Guidi, sea una obra que refleje la bondad de Dios. Que Él afirme tus obras, tu creatividad y te bendiga con todo lo que crees. 🙏🎨💖✨"},
+    {numero: "Lucas 12:48", texto: "Dios te ha dado muchos talentos, Guidi. Él confía en ti y sabe que los usarás bien. ¡Te va a pedir que sigas creciendo y mejorando siempre! 🌱💪🎨"},
+    {numero: "Filipenses 4:13", texto: "Lo puedes lograr, Guidi, todo lo que te propongas, porque Dios te da la fuerza para hacerlo. 💪🎨✨🙏"}
+               
+        ],
+        perdonada: [
+     {numero: "Efesios 1:7", texto: "Dios te ha perdonado, Guidi, porque Él es rico en gracia. Todo lo que hiciste mal, Él lo perdonó cuando aceptaste su amor y sacrificio. 🙏💖✨"},
+    {numero: "1 Juan 1:9", texto: "Si alguna vez fallas, Guidi, solo pídele perdón a Dios. Él es fiel y justo para perdonarte y limpiarte de todo lo que te pesa. ✨💖🙏"},
+    {numero: "Colosenses 3:13", texto: "Así como Dios te perdonó, Guidi, tú también perdona a los que te ofenden. Deja que ese perdón sea un regalo que compartes con el mundo. 🎁💖🙏"},
+    {numero: "Isaías 43:25", texto: "Dios dice: 'Yo soy el que borra tus rebeliones, Guidi, por amor a ti. No me acordaré más de tu rebeldía.' ¡Qué increíble es ser perdonada por Él! 💖🙏❌"},
+    {numero: "Salmos 103:12", texto: "Así como el oriente está lejos del occidente, así ha puesto Dios tus faltas, Guidi. Ya no están más, y Él te da una nueva oportunidad. 🌅✨🙏"},
+    {numero: "Mateo 18:21-22", texto: "Perdona siempre, Guidi, como Dios te ha perdonado a ti. No pongas límite al perdón. Él te da fuerza para perdonar una y otra vez. 💖🙌💪"},
+    {numero: "Hebreos 10:17", texto: "Dios dice: 'Sus pecados no los recordaré más', Guidi. Él ya te perdonó y no va a traerte de nuevo esos errores. 🙌❌💖"},
+    {numero: "Miqueas 7:19", texto: "Dios se alegra al perdonarte, Guidi, y arrojó tus pecados al fondo del mar. No tienes que cargar más con ellos. 🌊💖🙌"},
+    {numero: "Mateo 6:14-15", texto: "Si perdonas a los que te ofenden, Guidi, tu Padre celestial también te perdonará. Pero si no perdonas, Él no podrá perdonarte a ti. 💖🙏✨"},
+    {numero: "Efesios 4:32", texto: "Sé amable y compasiva, perdonando a los demás como Dios te perdonó, Guidi. El perdón sana el corazón herido. 💖🕊️✨"},
+    {numero: "Lucas 17:3-4", texto: "Si alguien te ofende, perdónalo, Guidi. Si se arrepiente, perdónalo, aunque sea muchas veces al día. Así como Dios lo hace contigo. 💖🙏🙌"},
+    {numero: "Romanos 12:19", texto: "No te vengues, Guidi. Deja que Dios se encargue de la justicia. Él dice: 'La venganza es mía, yo pagaré.' Confía en su justicia. 🙏⚖️💖"},
+    {numero: "Proverbios 19:11", texto: "La sabiduría te ayuda a ser lento para la ira, Guidi, y el perdón cubre la ofensa. La paz y la sabiduría se encuentran en perdonar. 🌿💖🕊️"}
+],
+        amada: [
+    {numero: "1 Juan 3:1", texto: "¡Mira qué gran amor nos ha dado el Padre, Guidi, que ahora somos llamados hijos de Dios! Eres amada y especial para Él. 💖👑🙏"},
+    {numero: "Jeremías 31:3", texto: "Con amor eterno te he amado, Guidi. Es por eso que te sigo mostrando mi fidelidad. Siempre serás mi hija amada. 💖🌸✨"},
+    {numero: "Romanos 8:35", texto: "Nada podrá separarte del amor de Dios, Guidi. Ni la angustia, ni la tribulación, ni la persecución, ni el hambre, ni el peligro, ni la espada te apartarán de su amor. 💖🛡️🙌"},
+    {numero: "Efesios 3:17-19", texto: "Que Cristo habite en tu corazón por la fe, Guidi, para que, arraigada y cimentada en amor, puedas conocer el amor de Cristo, que excede todo conocimiento. Eres amada más allá de lo que imaginas. 💖🌟🙏"},
+    {numero: "Romanos 5:8", texto: "Dios demuestra su amor hacia ti, Guidi, en que, siendo aún pecadora, Cristo murió por ti. Su amor por ti es incondicional y eterno. ✝️💖🙌"},
+    {numero: "Zacarías 2:8", texto: "Porque el Señor de los ejércitos te ha enviado, Guidi, y Él te cuida como la niña de sus ojos. Eres su hija amada y protegida. 💖👁️🛡️"},
+    {numero: "Isaías 54:10", texto: "Aunque los montes se aparten y los collados tiemblen, mi amor no se apartará de ti, ni mi pacto de paz se romperá. El amor de Dios por ti es firme y eterno. 🏔️💖✝️"},
+    {numero: "Salmos 17:8", texto: "Dios te guiará como la niña de sus ojos, te protegerá bajo la sombra de sus alas. El amor de Dios te cubre y te da seguridad. 💖🕊️🙌"},
+    {numero: "1 Juan 4:10", texto: "En esto consiste el amor, Guidi: no en que nosotros hayamos amado a Dios, sino en que Él nos amó a nosotros y envió a su Hijo para ser el sacrificio por nuestros pecados. Eres amada de una manera incomparable. 💖🙏✨"},
+    {numero: "Juan 3:16", texto: "Porque de tal manera amó Dios al mundo, Guidi, que dio a su Hijo unigénito para que todo aquel que en Él cree no se pierda, sino que tenga vida eterna. Dios te ama tanto. 💖✝️🌍"},
+    {numero: "Salmos 136:26", texto: "Dad gracias al Dios de los cielos, Guidi, porque su misericordia es eterna. El amor de Dios por ti no tiene fin. 💖🌟🙌"}
+],
+       valentia: [
+   {numero: "Josué 1:9", texto: "¡Sé fuerte y valiente! 💪 No tengas miedo ni te desanimes, porque el Señor tu Dios estará contigo dondequiera que vayas. 🙏✨"},
+    {numero: "Isaías 41:10", texto: "Dios le dice a Guidi... no tengas miedo, porque yo estoy contigo. No te desanimes, porque soy tu Dios. 💖 Yo te daré fuerzas, te ayudaré y siempre te sostendré. 💪👑"},
+    {numero: "2 Timoteo 1:7", texto: "Porque no nos ha dado Dios espíritu de temor, sino de poder, de amor y de dominio propio, Guidi. Tienes valentía y fuerza. 💥❤️💪"},
+    {numero: "Salmos 27:1", texto: "El Señor es mi luz 💡 y mi salvación; ¿de quién temeré? 🙋‍♀️ El Señor es la fortaleza de mi vida; ¿de quién he de atemorizarme? 🙌"},
+    {numero: "Efesios 6:10", texto: "Finalmente, fortalécete en el Señor y en el poder de su fuerza, Guidi. 💪 Estás rodeada de la fuerza de Dios. ⚡🙏"},
+    {numero: "Proverbios 28:1", texto: "El justo es valiente como un león 🦁, Guidi. No tengas miedo de hacer lo correcto. 💯✨"},
+    {numero: "Filipenses 4:13", texto: "Todo lo puedes en Cristo que te fortalece, Guidi. 💪 No hay desafío que no puedas enfrentar con la fuerza de Dios. 🙏💥"},
+    {numero: "Deuteronomio 31:6", texto: "Sé fuerte y valiente, no tengas miedo ni te asustes, porque el Señor tu Dios va contigo; no te dejará ni te desamparará. ✨🙌💖"},
+    {numero: "Salmos 34:4", texto: "Busqué al Señor, y Él me oyó, y me libró de todos mis temores. 🙏 Confía, Guidi, que Él te librará. 💫💖"},
+    {numero: "1 Corintios 16:13", texto: "Manténganse firmes en la fe, sean valientes y fuertes. 💪 La fuerza de Dios te hace valiente. 🙏👑"},
+    {numero: "Romanos 8:31", texto: "Si Dios está a nuestro favor, ¿quién podrá estar en nuestra contra, Guidi? 💖 La valentía de confiar en Dios es tuya. 🙌🙏"},
+    {numero: "Isaías 40:29", texto: "Él da fuerzas al cansado, y multiplica las fuerzas al que no tiene ningunas. 💖💪 Dios te fortalece, Guidi, en tus momentos de debilidad. ✨🙏"},
+],
+        soledad: [
+    {numero: "Isaías 41:10", texto: "No tengas miedo, yo estoy contigo. No te desanimes, porque soy tu Dios. Yo te daré fuerzas 💪, te ayudaré 🤝 y siempre te sostendré. 🙏✨"},
+    {numero: "Salmos 27:10", texto: "Aunque todos te abandonen, Dios siempre estará ahí para ti con los brazos abiertos. 🤗💖"},
+    {numero: "Salmos 27:1", texto: "Dios es tu luz 💡 y salvación, no tienes por qué temer. ✨🙏"},
+    {numero: "Mateo 28:20", texto: "Recuerda, estoy contigo siempre, hasta el final. 🙏❤️"},
+    {numero: "Salmos 46:1", texto: "Dios es tu refugio 🏰 y fortaleza, siempre estará ahí para ayudarte cuando lo necesites. 💪🌟"},
+    {numero: "Hebreos 13:5-6", texto: "Dios nunca te dejará ni te abandonará. Con confianza puedes decir: ‘Dios me ayuda, no tengo por qué temer.’ 💖🙏"},
+    {numero: "Josué 1:5-6", texto: "Así como estuve con Moisés, estaré contigo. No te dejaré sola. Sé fuerte 💪 y valiente. 💥"},
+    {numero: "Isaías 43:1-2", texto: "No tengas miedo, yo te llamé por tu nombre y eres mía. Si enfrentas ríos 🌊 o fuego 🔥, no te harán daño, porque yo estaré contigo. 🙌"},
+    {numero: "Romanos 8:38-39", texto: "Nada, ni lo que ves ni lo que no, podrá separarte del amor de Dios que está en Jesús. ❤️🙏"},
+    {numero: "Deuteronomio 31:8", texto: "Dios va delante de ti, siempre estará contigo. No te dejará sola, así que no tengas miedo. 💫🙌"},
+    {numero: "Salmos 23:4", texto: "Aunque pases por momentos difíciles, no temas, porque Dios está contigo y te dará consuelo. 🤗💖"},
+    {numero: "Juan 14:18", texto: "No los voy a dejar huérfanos; vendré a ustedes. 🙏💖"},
+    {numero: "Salmos 68:6", texto: "Dios da un hogar 🏠 a los solitarios y libera a los cautivos con alegría. 🎉✨"},
+    {numero: "Isaías 54:10", texto: "Aunque las montañas cambien ⛰️ y las colinas se derrumben, mi amor por ti no cambiará, dice el Señor. 💖🌈"},
+    {numero: "Mateo 11:28-29", texto: "Ven a mí si estás cansado o cargado, yo te haré descansar. Déjame enseñarte, porque soy amable y humilde. 🌿💖"},
+    {numero: "Zacarías 2:5", texto: "Yo seré para ti una muralla de fuego 🔥 alrededor y la gloria en medio de tu vida. ✨🛡️"},
+    {numero: "1 Pedro 5:7", texto: "Entrégale todas tus preocupaciones a Dios, porque Él cuida de ti. 🙏💖"},
+    {numero: "Éxodo 33:14", texto: "Dios dice: 'Mi presencia irá contigo y te dará descanso.' 🌟😌"},
+    {numero: "Isaías 49:15-16", texto: "¿Puede una madre olvidar a su hijo? Aunque eso ocurriera, yo nunca te olvidaré. Te tengo grabado en las palmas de mis manos. ✋💖"},
+    {numero: "Salmos 139:7-10", texto: "No hay lugar al que pueda ir donde tú no estés. Si subo al cielo ☁️, ahí estás. Si bajo al abismo 🌊, también estás. Me guiarás incluso en la oscuridad. 🌙🛤️"},
+    {numero: "Salmos 32:8", texto: "El Señor dice: «Mis ojos 👀 están puestos en ti. Yo te daré instrucciones, te daré consejos, te enseñaré el camino que debes seguir.» 🛤️🙏"}
+]
+    };
+
+    function mostrarVersiculos(tema) {
+        const contenedor = document.getElementById('contenedor');
+        contenedor.innerHTML = ''; // Limpiar contenido previo
+
+        versiculos[tema].forEach(versiculo => {
+            const div = document.createElement('div');
+            div.classList.add('versiculo');
+            div.innerHTML = `
+                <button onclick="mostrarTexto('${versiculo.numero}')">${versiculo.numero}</button>
+                <p id="${versiculo.numero}" class="versiculo-texto">${versiculo.texto}</p>
+            `;
+            contenedor.appendChild(div);
+        });
+    }
+
+    function mostrarTexto(versiculo) {
+        const p = document.getElementById(versiculo);
+        p.classList.toggle('visible');
+    }
+</script>
+</body>
+</html>
